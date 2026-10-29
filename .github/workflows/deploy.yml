@@ -25,7 +25,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/Ubuntu/simple-webapp-docker
-            git pull origin main
+            git fetch origin main
+            git show origin/main:index.html > index.html
             sudo docker build -t simple-webapp .
             sudo docker rm -f simple-webapp-container || true
             sudo docker run -d --name simple-webapp-container -p 80:80 simple-webapp
