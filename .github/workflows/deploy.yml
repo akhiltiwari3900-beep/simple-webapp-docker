@@ -1,20 +1,21 @@
 name: My Web App CI/CD
 
-'on':    
+on:
   push:
     branches:
       - main
-  workflows_dispatch: 
-     
+  workflow_dispatch:
+
 jobs:
-   bulid:
+  build:
     runs-on: ubuntu-latest
-   steps:
+
+    steps:
       - name: Get the code
         uses: actions/checkout@v4
 
       - name: Check website file
-        run:  test -f index.html
+        run: test -f index.html
 
-      - name: Check website file
-        run: 'echo "Build check passed!"'
+      - name: Build Docker image
+        run: docker build -t simple-webapp .
