@@ -25,11 +25,13 @@ jobs:
         run: sudo docker rm -f simple-webapp-container || true
 
       - name: Run new container
-        sudo docker run -d \
+        run: |
+          sudo docker run -d \
             --name simple-webapp-container \
             --log-driver=awslogs \
-           --log-opt awslogs-region=ap-southeast-2 \
-  --log-opt awslogs-group=/simple-webapp/logs \
-  --log-opt awslogs-stream=simple-webapp-container \
-  -p 80:80 \
-  simple-webapp
+            --log-opt awslogs-region=ap-southeast-2 \
+            --log-opt awslogs-group=/simple-webapp/logs \
+            --log-opt awslogs-stream=simple-webapp-container \
+            -p 80:80 \
+            simple-webapp
+
