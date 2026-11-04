@@ -1,4 +1,3 @@
-
 name: My Web App CI/CD
 
 on:
@@ -6,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+
 
 jobs:
   deploy:
